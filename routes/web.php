@@ -10,6 +10,8 @@ Route::get('/', function () {
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.home');
 
+Route::get('/admin/articles', [AdminController::class, 'articles'])->name('admin.articles');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

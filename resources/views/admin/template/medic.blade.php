@@ -2,7 +2,6 @@
     <div class="card border-0 shadow">
         <div class="card-header border-bottom d-flex align-items-center justify-content-between">
             <h2 class="fs-5 fw-bold mb-0">{{ $title }}</h2>
-            <a href="#" class="btn btn-sm btn-primary">See all</a>
         </div>
         <div class="card-body">
             <ul class="list-group list-group-flush list my--3">

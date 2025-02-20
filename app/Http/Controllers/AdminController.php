@@ -27,7 +27,7 @@ class AdminController extends Controller
 
         $icons = [
             [
-                'title' => 'Total Karyawan',
+                'title' => 'Total Tenaga Medis',
                 'total' => '345',
                 'svg' => '<svg class="icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
@@ -54,7 +54,46 @@ class AdminController extends Controller
             ],
         ];
 
-
         return view('admin.home', compact('doctors', 'nurses', 'articles', 'icons'));
+    }
+
+    public function articles()
+    {
+        $articles = [
+            ['title' => 'Faktor Risiko Autisme', 'author' => 'Lah kok tanya saya', 'category' => 'Autisme'],
+            ['title' => 'Ini Manfaat Sawi Putih untuk Kesehatan', 'author' => 'awokwokwoa', 'category' => 'Diet makanan'],
+            ['title' => 'Ini Obat Batuk Pilek Anak Alami Paling Ampuh di Apotek', 'author' => 'saya sendiri', 'category' => 'Obat Batuk'],
+            ['title' => 'Ini 7 Rekomendasi Obat Migrain yang Ampuh Atasi Sakit Kepala Sebelah', 'author' => 'fatma', 'category' => 'Obat Migrain'],
+        ];
+
+        return view('admin.articles', compact('articles'));
+    }
+
+    public function doctors()
+    {
+        $doctors = [
+            ['name' => 'Chris Wood', 'status' => 'Online', 'status_class' => 'bg-success', 'image' => 'assets/img/team/Profile.png'],
+            ['name' => 'Jose Leos', 'status' => 'In a meeting', 'status_class' => 'bg-warning', 'image' => 'assets/img/team/profile-picture-2.jpg'],
+        ];
+
+        return view('admin.all-doctors', [
+            'title' => 'Doctors',
+            'users' => $doctors,
+            'route' => '/admin/doctors' // This matches the route name
+        ]);
+    }
+
+    public function nurses()
+    {
+        $nurses = [
+            ['name' => 'Bonnie Green', 'status' => 'Offline', 'status_class' => 'bg-danger', 'image' => 'assets/img/team/profile-picture-3.jpg'],
+            ['name' => 'Neil Sims', 'status' => 'Offline', 'status_class' => 'bg-danger', 'image' => 'assets/img/team/profile-picture-4.jpg'],
+        ];
+
+        return view('admin.all-nurses', [
+            'title' => 'Nurses',
+            'users' => $nurses,
+            'route' => '/admin/nurses' // This matches the route name
+        ]);
     }
 }

@@ -1,16 +1,20 @@
 @extends('admin.template.layout')
 @section('title', 'Admin Dashboard')
 
+@section('navbar')
+    @include('admin.template.navbar')
+@endsection
+
 @section('table_content')
 
     {{-- Stats --}}
     @include('admin.template.article', ['title' => 'Articles yang Dibuat', 'articles' => $articles])
 
     {{-- Doctor --}}
-    @include('admin.template.member', ['title' => 'Doctors', 'users' => $doctors])
+    @include('admin.template.medic', ['title' => 'Doctors', 'users' => $doctors])
 
     {{-- Nurse --}}
-    @include('admin.template.member', ['title' => 'Nurses', 'users' => $nurses])
+    @include('admin.template.medic', ['title' => 'Nurses', 'users' => $nurses])
 
 @endsection
 
