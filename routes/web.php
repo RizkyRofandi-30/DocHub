@@ -12,6 +12,10 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.home');
 
 Route::get('/admin/articles', [AdminController::class, 'articles'])->name('admin.articles');
 
+Route::get('/admin/upload-articles', function () {
+    return view('admin.upload-articles');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -32,7 +32,8 @@
                                 </svg>
                                 Add Nurses
                             </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center"
+                                href="{{ url('/admin/upload-articles') }}">
                                 <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -40,7 +41,7 @@
                                     </path>
                                     <path d="M9 13h2v5a1 1 0 11-2 0v-5z"></path>
                                 </svg>
-                                add Article
+                                Upload Files
                             </a>
                         </div>
                     </div>

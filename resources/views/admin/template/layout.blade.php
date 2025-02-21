@@ -65,6 +65,7 @@
         <main class="content">
             @yield('navbar')
             <div class="row">
+                @yield('single_content')
                 <div class="col-12 col-xl-8">
                     <div class="row">
                         @yield('table_content')

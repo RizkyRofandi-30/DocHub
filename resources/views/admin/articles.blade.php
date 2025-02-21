@@ -2,7 +2,7 @@
 
 @section('title', 'Admin Artciles')
 
-@section('table_content')
+@section('single_content')
     {{-- Articles --}}
     @include('admin.template.list-all-articles', [
         'title' => 'Articles yang Dibuat',
