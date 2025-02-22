@@ -14,7 +14,8 @@
                             New Task
                         </button>
                         <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" data-bs-toggle="modal"
+                                data-bs-target="#add_doctor" href="#">
                                 <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -23,7 +24,8 @@
                                 </svg>
                                 Add Doctor
                             </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" data-bs-toggle="modal"
+                                data-bs-target="#add_nurse" href="#">
                                 <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -83,3 +85,4 @@
         </div>
     </div>
 </nav>
+@include('admin.template.add-doctor-nurse')

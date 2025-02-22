@@ -24,7 +24,9 @@
                                 </div>
                             </div>
                             <div class="col text-end">
-                                <a href="#" class="btn btn-sm btn-secondary d-inline-flex align-items-center">
+                                <a href="#" class="btn btn-sm btn-secondary d-inline-flex align-items-center"
+                                    data-bs-toggle="modal" data-bs-target="#update" data-name="{{ $user['name'] }}"
+                                    data-status="{{ $user['status'] }}" data-title="{{ $title }}">
                                     <svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -41,3 +43,4 @@
         </div>
     </div>
 </div>
+@include('admin.template.update')
