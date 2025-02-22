@@ -11,7 +11,7 @@
                             <div class="col-auto">
                                 <!-- Avatar -->
                                 <a href="#" class="avatar">
-                                    <img class="rounded" alt="Image placeholder" src="{{ asset($user['image']) }}">
+                                    <img class="rounded" alt="Image placeholder" src="assets/img/team/Profile.png">
                                 </a>
                             </div>
                             <div class="col-auto ms--2">

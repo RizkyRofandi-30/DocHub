@@ -72,8 +72,8 @@ class AdminController extends Controller
     public function doctors()
     {
         $doctors = [
-            ['name' => 'Chris Wood', 'status' => 'Online', 'status_class' => 'bg-success', 'image' => 'assets/img/team/Profile.png'],
-            ['name' => 'Jose Leos', 'status' => 'In a meeting', 'status_class' => 'bg-warning', 'image' => 'assets/img/team/profile-picture-2.jpg'],
+            ['name' => 'Chris Wood', 'status' => 'Online', 'status_class' => 'bg-success'],
+            ['name' => 'Jose Leos', 'status' => 'In a meeting', 'status_class' => 'bg-warning'],
         ];
 
         return view('admin.all-doctors', [
@@ -86,8 +86,8 @@ class AdminController extends Controller
     public function nurses()
     {
         $nurses = [
-            ['name' => 'Bonnie Green', 'status' => 'Offline', 'status_class' => 'bg-danger', 'image' => 'assets/img/team/profile-picture-3.jpg'],
-            ['name' => 'Neil Sims', 'status' => 'Offline', 'status_class' => 'bg-danger', 'image' => 'assets/img/team/profile-picture-4.jpg'],
+            ['name' => 'Bonnie Green', 'status' => 'Offline', 'status_class' => 'bg-danger'],
+            ['name' => 'Neil Sims', 'status' => 'Offline', 'status_class' => 'bg-danger'],
         ];
 
         return view('admin.all-nurses', [
