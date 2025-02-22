@@ -18,15 +18,24 @@
                                 <h4 class="h6 mb-0">
                                     <a href="#">{{ $user['name'] }}</a>
                                 </h4>
+                                @if ($user instanceof App\Models\Doctor)
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-info dot rounded-circle me-1"></div>
+                                        <small>{{ $user['specialist'] }}</small>
+                                    </div>
+                                @else
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-danger dot rounded-circle me-1"></div>
+                                        <small>{{ $user['jenis_kelamin'] }}</small>
+                                    </div>
+                                @endif
                                 <div class="d-flex align-items-center">
-                                    <div class="{{ $user['status_class'] }} dot rounded-circle me-1"></div>
-                                    <small>{{ $user['status'] }}</small>
+                                    <div class="bg-success dot rounded-circle me-1"></div>
+                                    <small>Rp: {{ number_format($user['salary'], 0, ',', '.') }}</small>
                                 </div>
                             </div>
                             <div class="col text-end">
-                                <a href="#" class="btn btn-sm btn-secondary d-inline-flex align-items-center"
-                                    data-bs-toggle="modal" data-bs-target="#update" data-name="{{ $user['name'] }}"
-                                    data-status="{{ $user['status'] }}" data-title="{{ $title }}">
+                                <a href="#" class="btn btn-sm btn-secondary d-inline-flex align-items-center">
                                     <svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -43,4 +52,3 @@
         </div>
     </div>
 </div>
-@include('admin.template.update')

@@ -10,8 +10,13 @@
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h6 text-gray-400 mb-0">{{ $icon['title'] }}</h2>
-                        <h3 class="fw-extrabold mb-2">{{ $icon['total'] }}</h3>
+                        @if ($icon['title'] == 'Total Gaji')
+                            <h2 class="h6 text-gray-400 mb-0">{{ $icon['title'] }} (Rp)</h2>
+                            <h3 class="fw-extrabold mb-2">{{ number_format($icon['total'], 0, ',', '.') }}</h3>
+                        @else
+                            <h2 class="h6 text-gray-400 mb-0">{{ $icon['title'] }}</h2>
+                            <h3 class="fw-extrabold mb-2">{{ $icon['total'] }}</h3>
+                        @endif
                     </div>
                 </div>
             </div>

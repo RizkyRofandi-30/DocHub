@@ -23,20 +23,25 @@
                 </thead>
                 <tbody>
                     @foreach ($articles as $article)
-                        <tr>
-                            <th class="text-gray-900" scope="row">
-                                {{ Str::limit($article['title'], 20) }}
-                            </th>
-                            <td class="fw-bolder text-gray-500">
-                                {{ Str::limit($article['author'], 20) }}
-                            </td>
-                            <td class="fw-bolder text-gray-500">
-                                {{ Str::limit($article['category'], 20) }}
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                            </td>
-                        </tr>
+                        <form action="{{ route('articles.destroy', $article->id) }}" method="POST"
+                            onsubmit="return confirm('Yakin ingin menghapus artikel ini?');">
+                            @csrf
+                            <tr>
+                                <th class="text-gray-900" scope="row">
+                                    {{ Str::limit($article['title'], 20) }}
+                                </th>
+                                <td class="fw-bolder text-gray-500">
+                                    {{ Str::limit($article['author'], 20) }}
+                                </td>
+                                <td class="fw-bolder text-gray-500">
+                                    {{ Str::limit($article['category'], 20) }}
+                                </td>
+                                <td class="text-center">
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        </form>
                     @endforeach
                 </tbody>
             </table>
