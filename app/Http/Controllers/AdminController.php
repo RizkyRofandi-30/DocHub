@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Nurse;
 use App\Models\Doctor;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -40,10 +41,11 @@ class AdminController extends Controller
             ],
         ];
 
+        $admin = Auth::user()->name;
         $doctors = Doctor::all();
         $nurses = Nurse::all();
         $articles = Article::take(3)->get();
-        return view('admin.home', compact('doctors', 'nurses', 'articles', 'icons'));
+        return view('admin.home', compact('doctors', 'nurses', 'articles', 'icons', 'admin'));
     }
 
     public function destroy($id)

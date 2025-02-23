@@ -10,14 +10,19 @@
     <body class="artikel-page">
         <header class="header sticky-top">
             <div class="container d-flex justify-content-between">
-                <a href="index.html" class="logo d-flex align-items-center">
-                    <img src="assets/img/index/logo.png" alt="">
+                <a href="{{ route('halamanutama') }}" class="logo d-flex align-items-center me-auto">
+                    <img src="{{ asset('assets/img/index/logo.png') }}" alt="">
                 </a>
                 <nav class="navmenu">
                     <ul>
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="Artikel.html" class="active">Artikel</a></li>
-                        <li><a href="form.html">Riwayat</a></li>
+                        <li><a href="{{ route('buatjanji') }}" class="active">Janji Temu</a></li>
+                        <li><a href="{{ route('riwayat') }}">Riwayat</a></li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="cta-btn" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                        this.closest('form').submit();">Keluar</a>
+                        </form>
                     </ul>
                 </nav>
             </div>
@@ -26,12 +31,13 @@
         <main class="main">
             <section class="artikel-section section">
                 <div class="container">
-                    <h2>Artikel Kesehatan</h2>
-                    <p>Temukan berbagai artikel kesehatan bermanfaat:</p>
-                    <ul class="artikel-list">
-                        <li><a href="#">Manfaat Berolahraga Secara Rutin</a></li>
-                        <li><a href="#">Tips Pola Makan Sehat untuk Semua Usia</a></li>
-                    </ul>
+                    @foreach ($articles as $article)
+                        <h2>{{ $article['title'] }}</h2>
+                        <ul class="artikel-list">
+                            <li><a href="#">{{ $article['category'] }}</a></li>
+                        </ul>
+                        <p>{!! nl2br(e($article['body'])) !!}</p>
+                    @endforeach
                 </div>
             </section>
         </main>

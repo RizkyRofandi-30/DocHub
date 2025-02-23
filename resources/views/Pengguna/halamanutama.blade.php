@@ -10,21 +10,23 @@
         <div class="branding d-flex align-items-center">
 
             <div class="container position-relative d-flex align-items-center justify-content-end">
-                <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center me-auto">
-                    <img src="{{ asset('img/index/logo.png') }}" alt="">
+                <a href="{{ route('halamanutama') }}" class="logo d-flex align-items-center me-auto">
+                    <img src="{{ asset('assets/img/index/logo.png') }}" alt="">
                 </a>
 
                 <nav id="navmenu" class="navmenu">
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                     <ul>
-                        <li><a href="{{ route('janji') }}" class="nav-link">Janji Temu</a></li>
+                        <li><a href="{{ route('buatjanji') }}" class="nav-link">Janji Temu</a></li>
                         <li><a href="{{ route('riwayat') }}" class="nav-link">Riwayat</a></li>
-                        <li><a href="{{ route('profil') }}" class="nav-link">Profil</a></li>
                     </ul>
                 </nav>
-
-                <a class="cta-btn" href="">Keluar</a>
-
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="cta-btn" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        this.closest('form').submit();">Keluar</a>
+                </form>
             </div>
 
         </div>
@@ -37,56 +39,34 @@
         <section id="featured-services" class="featured-services section">
 
             <div class="container">
-
                 <div class="row gy-4">
+                    @foreach ($articles as $article)
+                        {{-- Start Item --}}
+                        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-item position-relative">
+                                <!-- Select one icon based on article index -->
+                                @php
+                                    $icon = $icons[$loop->index % count($icons)]; // Cycle through icons
+                                @endphp
+                                <div class="icon"><i class="{{ $icon }} icon"></i></div>
+                                <!-- Display only one icon -->
 
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="fas fa-heartbeat icon"></i></div>
-                            <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                        </div>
-                    </div><!-- End Service Item -->
+                                <h4>
+                                    <a href="{{ route('artikel', ['id' => $article['id']]) }}" class="stretched-link">
+                                        {{ Str::limit($article['title'], 30) }}
+                                    </a>
+                                </h4>
+                                <p>{{ Str::limit($article['body'], 80) }}</p>
 
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="fas fa-pills icon"></i></div>
-                            <h4><a href="" class="stretched-link">Sed ut perspici</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="fas fa-thermometer icon"></i></div>
-                            <h4><a href="" class="stretched-link">Magni Dolores</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-item position-relative">
-                            <div class="icon"><i class="fas fa-dna icon"></i></div>
-                            <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-                        <div class="card">
-                            <span class="badge">Machine Learning</span>
-                            <span style="float: right; color: gray; font-size: 12px;">3 weeks ago</span>
-                            <div class="title">Dolorum blanditiis quaerat officia voluptatem quidem quibusdam ad.</div>
-                            <div class="description">Et doloribus magnam consequatur. Qui autem soluta explicabo maxime unde
-                                non et. Ullam quia deleniti...</div>
-                            <div class="footer">
-                                <a href="#" class="read-more">Read more →</a>
+                                <!-- Footer -->
+                                <div class="footer position-absolute" style="bottom: 0; right: 0; margin-right:3%;">
+                                    <a href="#" class="read-more">Read more →</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <!-- End Service Item -->
+                    @endforeach
                 </div>
-
             </div>
-
-            </div>
-        @endsection
+        </section>
+    @endsection

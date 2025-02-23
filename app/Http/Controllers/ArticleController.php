@@ -37,4 +37,11 @@ class ArticleController extends Controller
 
         return redirect()->route('admin.articles');
     }
+
+    public function show($id)
+    {
+        $articles = Article::where('id', $id)->get();
+
+        return view('Pengguna.artikel', compact('articles'));
+    }
 }

@@ -10,21 +10,24 @@
         <div class="branding d-flex align-items-center">
 
             <div class="container position-relative d-flex align-items-center justify-content-end">
-                <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center me-auto">
+                <a href="{{ route('halamanutama') }}" class="logo d-flex align-items-center me-auto">
                     <img src="{{ asset('assets/img/index/logo.png') }}" alt="">
                 </a>
 
                 <nav id="navmenu" class="navmenu">
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                     <ul>
-                        <li><a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a></li>
-                        <li><a href="{{ route('janji') }}" class="nav-link">Janji Temu</a></li>
-                        <li><a href="{{ route('profil') }}" class="nav-link">Profil</a></li>
+                        <li><a href="{{ route('buatjanji') }}" class="nav-link">Janji Temu</a></li>
+                        <li><a href="{{ route('riwayat') }}" class="nav-link">Riwayat</a></li>
                     </ul>
                 </nav>
 
-                <a class="cta-btn" href="">Keluar</a>
-
+                <<form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="cta-btn" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        this.closest('form').submit();">Keluar</a>
+                    </form>
             </div>
 
         </div>
