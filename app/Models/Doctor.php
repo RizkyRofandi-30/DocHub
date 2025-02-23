@@ -15,4 +15,9 @@ class Doctor extends Model
     protected $casts = [
         'specialist' => DoctorSpecialist::class,
     ];
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

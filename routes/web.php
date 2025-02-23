@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HalamanUtamaController;
 use App\Http\Controllers\MedicController;
 
@@ -37,9 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/buatjanji', function () {
-    return view('Pengguna.buatjanji');
-})->name('buatjanji');
+Route::get('/buatjanji', [BookingController::class, 'create'])->name('buatjanji');
+
+Route::post('/buatjanji', [BookingController::class, 'store'])->name('buatjanji.store');
+
 
 
 Route::get('/riwayat', function () {
